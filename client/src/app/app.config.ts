@@ -23,6 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([errorInterceptor, jwtInterceptor, loadingInterceptor])),
     provideAppInitializer(async () => {
       const initService = inject(InitService);
+
       return new Promise<void>((resolve) => {
         setTimeout(async () => {
           try {
@@ -32,10 +33,10 @@ export const appConfig: ApplicationConfig = {
             if (splash) {
               splash.remove();
             }
-            resolve();
+            resolve()
           }
-        }, 500);
-      });
-    }),
-  ],
+        }, 500)
+      })
+    })
+  ]
 };

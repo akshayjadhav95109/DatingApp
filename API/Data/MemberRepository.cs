@@ -48,12 +48,7 @@ public class MemberRepository (AppDbContext _context) : IMemberRepository
         return await _context.Members.Where(x => x.Id == memberId)
                 .SelectMany(x => x.Photos).ToListAsync();
     }
-
-    public async Task<bool> SaveAllAsync()
-    {
-        return await _context.SaveChangesAsync() > 0;
-    }
-
+    
     public void Update(Member member)
     {
         _context.Entry(member).State = EntityState.Modified;
